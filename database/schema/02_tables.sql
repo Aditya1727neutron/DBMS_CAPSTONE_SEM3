@@ -104,10 +104,12 @@ CREATE TABLE IF NOT EXISTS matches (
     (status <> 'finished')
   ),
   CONSTRAINT uq_season_fixture UNIQUE (season_id, home_team_id, away_team_id),
-  CONSTRAINT fk_matches_home_team FOREIGN KEY (season_id, home_team_id) 
-    REFERENCES season_teams(season_id, team_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT fk_matches_away_team FOREIGN KEY (season_id, away_team_id) 
-    REFERENCES season_teams(season_id, team_id) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT fk_matches_season FOREIGN KEY (season_id) 
+    REFERENCES seasons(id) ON DELETE CASCADE,
+  CONSTRAINT fk_matches_home_team FOREIGN KEY (home_team_id) 
+    REFERENCES teams(id) ON DELETE RESTRICT,
+  CONSTRAINT fk_matches_away_team FOREIGN KEY (away_team_id) 
+    REFERENCES teams(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 -- 8. PLAYER_MATCH_STATS
