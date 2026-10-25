@@ -4,50 +4,50 @@ import { formatGoalDifference } from '../utils/formatters.js';
 
 const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true }) => {
   const getZoneBorder = (pos) => {
-    if (pos <= 4) return 'border-l-4 border-l-blue-500';
-    if (pos <= 6) return 'border-l-4 border-l-amber-500';
-    if (pos === 7) return 'border-l-4 border-l-emerald-500';
-    if (pos >= 18) return 'border-l-4 border-l-rose-500';
+    if (pos <= 4) return 'border-l-4 border-l-[#0066FF]';
+    if (pos <= 6) return 'border-l-4 border-l-[#FFD700]';
+    if (pos === 7) return 'border-l-4 border-l-emerald-400';
+    if (pos >= 18) return 'border-l-4 border-l-[#FF0055]';
     return 'border-l-4 border-l-transparent';
   };
 
   const displayData = showFullTable ? standings : standings.slice(0, 10);
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-slate-700/60 bg-slate-900/70 backdrop-blur-md shadow-xl">
+    <div className="overflow-x-auto rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/90 via-[#040816]/95 to-[#0c0818]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.2),0_0_25px_-5px_rgba(255,0,85,0.15)]">
       <table className="w-full text-left border-collapse text-sm">
         <thead>
-          <tr className="border-b border-slate-700/80 bg-slate-800/60 text-xs font-semibold uppercase tracking-wider text-slate-400">
-            <th className="py-3.5 pl-4 pr-2 text-center w-12">Pos</th>
-            <th className="py-3.5 px-3">Club</th>
-            <th className="py-3.5 px-2 text-center w-10">P</th>
-            <th className="py-3.5 px-2 text-center w-10">W</th>
-            <th className="py-3.5 px-2 text-center w-10">D</th>
-            <th className="py-3.5 px-2 text-center w-10">L</th>
-            <th className="py-3.5 px-2 text-center hidden md:table-cell w-12">GF</th>
-            <th className="py-3.5 px-2 text-center hidden md:table-cell w-12">GA</th>
-            <th className="py-3.5 px-2 text-center w-14 font-semibold">GD</th>
-            <th className="py-3.5 px-3 text-center w-14 font-bold text-amber-400">PTS</th>
-            <th className="py-3.5 px-3 text-center hidden lg:table-cell w-32">Form</th>
+          <tr className="border-b border-white/10 bg-black/40 text-xs font-black uppercase tracking-wider text-slate-400">
+            <th className="py-4 pl-5 pr-2 text-center w-12">Pos</th>
+            <th className="py-4 px-3">Club</th>
+            <th className="py-4 px-2 text-center w-10">P</th>
+            <th className="py-4 px-2 text-center w-10">W</th>
+            <th className="py-4 px-2 text-center w-10">D</th>
+            <th className="py-4 px-2 text-center w-10">L</th>
+            <th className="py-4 px-2 text-center hidden md:table-cell w-12">GF</th>
+            <th className="py-4 px-2 text-center hidden md:table-cell w-12">GA</th>
+            <th className="py-4 px-2 text-center w-14 font-bold">GD</th>
+            <th className="py-4 px-3 text-center w-14 font-black text-[#FFD700] drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">PTS</th>
+            <th className="py-4 px-3 text-center hidden lg:table-cell w-32">Form</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-800/80 text-slate-200">
+        <tbody className="divide-y divide-white/5 text-slate-200">
           {displayData.map((row) => {
             const isFocus = row.team_id === focusTeamId;
             return (
               <tr
                 key={row.team_id || row.position}
-                className={`transition-colors ${getZoneBorder(row.position)} ${
+                className={`transition-all duration-200 ${getZoneBorder(row.position)} ${
                   isFocus
-                    ? 'bg-gradient-to-r from-[#004D98]/20 via-[#A50044]/15 to-transparent font-medium text-white'
-                    : 'hover:bg-slate-800/40'
+                    ? 'bg-gradient-to-r from-[#0066FF]/25 via-[#FF0055]/20 to-transparent font-bold text-white shadow-[inset_0_0_20px_rgba(0,102,255,0.2)]'
+                    : 'hover:bg-white/[0.04]'
                 }`}
               >
-                <td className="py-3.5 pl-4 pr-2 text-center font-bold">
+                <td className="py-3.5 pl-5 pr-2 text-center font-bold">
                   <span
                     className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs ${
                       isFocus
-                        ? 'bg-amber-400 text-slate-950 font-extrabold shadow-sm'
+                        ? 'bg-[#FFD700] text-[#030712] font-black shadow-[0_0_10px_#FFD700]'
                         : 'text-slate-300'
                     }`}
                   >

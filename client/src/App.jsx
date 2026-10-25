@@ -65,9 +65,8 @@ function App() {
     <ErrorBoundary>
       <BrowserRouter>
         <div
-          className={`min-h-screen flex flex-col relative overflow-hidden ${
-            darkMode ? 'bg-barca-dark' : 'bg-barca-away-bg'
-          }`}
+          className={`min-h-screen flex flex-col relative overflow-hidden ${darkMode ? 'bg-barca-dark' : 'bg-barca-away-bg'
+            }`}
         >
           {/* Animated Blaugrana background orbs */}
           <div className="bg-orb bg-orb-1" />

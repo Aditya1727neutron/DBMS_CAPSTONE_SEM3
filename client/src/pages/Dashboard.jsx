@@ -94,50 +94,50 @@ function Dashboard() {
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* League Standing */}
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md relative overflow-hidden group hover:border-amber-400/40 transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs uppercase font-bold text-slate-400">La Liga Standing</span>
-            <span className="w-8 h-8 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center font-black text-sm">
+        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">La Liga Standing</span>
+            <span className="px-3 py-1 rounded-full bg-[#FFD700] text-[#030712] font-black text-xs shadow-[0_0_12px_#FFD700]">
               #{standings?.position || '—'}
             </span>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-white font-sans">
-            {standings?.points ?? 0} <span className="text-xs font-medium text-slate-400">PTS</span>
+          <p className="text-3xl sm:text-4xl font-black text-[#FFD700] font-heading drop-shadow-[0_0_12px_rgba(255,215,0,0.4)]">
+            {standings?.points ?? 0} <span className="text-xs font-bold text-slate-400">PTS</span>
           </p>
           <div className="flex items-center gap-2 mt-2 text-xs text-slate-400">
             <span>{standings?.played ?? 0} played</span>
             <span>•</span>
-            <span className="text-amber-400/90 font-medium">{standings?.won ?? 0} wins</span>
+            <span className="text-[#FFD700] font-bold">{standings?.won ?? 0} wins</span>
           </div>
         </div>
 
         {/* Win Rate */}
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md relative overflow-hidden group hover:border-emerald-400/40 transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs uppercase font-bold text-slate-400">Win Rate</span>
-            <span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm">
+        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">Win Rate</span>
+            <span className="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-black text-xs shadow-[0_0_10px_rgba(16,185,129,0.3)]">
               %
             </span>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-emerald-400 font-sans">
+          <p className="text-3xl sm:text-4xl font-black text-emerald-400 font-heading">
             {formatPercentage(standings?.won, standings?.played)}
           </p>
           <div className="flex items-center gap-2 mt-2 text-xs text-slate-400">
-            <span className="text-emerald-400">{standings?.won ?? 0}W</span>
+            <span className="text-emerald-400 font-bold">{standings?.won ?? 0}W</span>
             <span>{standings?.drawn ?? 0}D</span>
-            <span className="text-rose-400">{standings?.lost ?? 0}L</span>
+            <span className="text-[#FF0055] font-bold">{standings?.lost ?? 0}L</span>
           </div>
         </div>
 
         {/* Goals Scored & Conceded */}
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md relative overflow-hidden group hover:border-blue-400/40 transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs uppercase font-bold text-slate-400">Goals (GF / GA)</span>
-            <span className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-xs">
+        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">Goals (GF / GA)</span>
+            <span className="w-8 h-8 rounded-xl bg-[#0066FF]/15 text-[#60A5FA] border border-[#0066FF]/30 flex items-center justify-center font-bold text-xs shadow-[0_0_10px_rgba(0,102,255,0.3)]">
               ⚽
             </span>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-white font-sans">
+          <p className="text-3xl sm:text-4xl font-black text-white font-heading">
             {standings?.gf ?? 0} <span className="text-slate-600 font-light">/</span> {standings?.ga ?? 0}
           </p>
           <p className="text-xs text-slate-400 mt-2 font-medium">
@@ -145,31 +145,31 @@ function Dashboard() {
           </p>
         </div>
 
-        {/* Goal Difference (Fixed sign bug: +GD or -GD) */}
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md relative overflow-hidden group hover:border-amber-400/40 transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs uppercase font-bold text-slate-400">Goal Difference</span>
-            <span className="w-8 h-8 rounded-lg bg-[#A50044]/20 text-rose-300 flex items-center justify-center font-bold text-xs">
+        {/* Goal Difference */}
+        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">Goal Difference</span>
+            <span className="w-8 h-8 rounded-xl bg-[#FF0055]/15 text-[#FB7185] border border-[#FF0055]/30 flex items-center justify-center font-black text-xs shadow-[0_0_10px_rgba(255,0,85,0.3)]">
               GD
             </span>
           </div>
           <p
-            className={`text-2xl sm:text-3xl font-black font-sans ${
-              Number(standings?.gd || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'
+            className={`text-3xl sm:text-4xl font-black font-heading ${
+              Number(standings?.gd || 0) >= 0 ? 'text-emerald-400' : 'text-[#FF0055]'
             }`}
           >
             {formatGoalDifference(standings?.gd)}
           </p>
           <p className="text-xs text-slate-400 mt-2 font-medium">
-            Clean Sheets: <span className="text-amber-400 font-bold">{summary?.clean_sheets || 0}</span>
+            Clean Sheets: <span className="text-[#FFD700] font-black">{summary?.clean_sheets || 0}</span>
           </p>
         </div>
       </div>
 
       {/* Next Match & Form Guide Banner */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Next Scheduled Fixture */}
-        <div className="lg:col-span-2 p-6 rounded-2xl border border-slate-800 bg-gradient-to-br from-[#004D98]/20 via-slate-900/90 to-[#A50044]/20 backdrop-blur-md shadow-xl flex flex-col justify-between">
+        {/* Next Scheduled Fixture with Glowing Border */}
+        <div className="lg:col-span-2 p-7 rounded-3xl border border-white/15 bg-gradient-to-br from-[#0066FF]/20 via-[#040816]/90 to-[#FF0055]/20 backdrop-blur-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8),0_0_35px_rgba(0,102,255,0.3),0_0_30px_rgba(255,0,85,0.25)] relative overflow-hidden flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs uppercase tracking-wider font-extrabold text-amber-400 flex items-center gap-1.5">

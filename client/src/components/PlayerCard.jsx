@@ -37,29 +37,31 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
   const shirtNumber = player.shirt_number || player.shirtNumber;
 
   return (
-    <div className="glass-card-hover p-5 group relative overflow-hidden flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/60 hover:border-amber-400/50 backdrop-blur-md transition-all duration-300">
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#004D98] via-[#A50044] to-[#EDBB00] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="p-5 group relative overflow-hidden flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 hover:border-white/25 backdrop-blur-2xl transition-all duration-300 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_40px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1.5">
+      {/* Top accent line (Royal Blue to Electric Gold to Scarlet Red) */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0066FF] via-[#FFD700] to-[#FF0055] opacity-50 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_12px_#FFD700]" />
 
       <div>
         {/* Header: Avatar + Position + Favorite */}
-        <div className="flex items-start justify-between mb-3">
+        <div className="flex items-start justify-between mb-3.5">
           <div className="flex items-center gap-3">
             <div className="relative">
               {player.image_url ? (
                 <img
                   src={player.image_url}
                   alt={player.name}
-                  className="w-12 h-12 rounded-xl object-cover shadow-lg border border-slate-700/80 group-hover:scale-105 transition-transform"
+                  className="w-13 h-13 rounded-2xl object-cover shadow-lg border border-white/15 group-hover:scale-105 transition-transform"
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               ) : (
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#004D98] to-[#A50044] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-105 text-white font-bold text-sm">
-                  {shirtNumber || initials}
+                <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#0066FF] to-[#FF0055] p-[1px] shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  <div className="w-full h-full bg-[#040816] rounded-[15px] flex items-center justify-center text-white font-black text-sm">
+                    {shirtNumber || initials}
+                  </div>
                 </div>
               )}
               {shirtNumber && (
-                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-400 text-slate-950 font-extrabold text-[10px] flex items-center justify-center shadow">
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#FFD700] text-[#030712] font-black text-[10px] flex items-center justify-center shadow-[0_0_10px_#FFD700]">
                   {shirtNumber}
                 </span>
               )}

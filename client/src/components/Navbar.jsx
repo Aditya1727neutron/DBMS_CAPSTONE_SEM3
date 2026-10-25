@@ -27,11 +27,10 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 h-16 navbar-blur border-b transition-all duration-300 ${
-        darkMode
+      className={`fixed top-0 left-0 right-0 z-50 h-16 navbar-blur border-b transition-all duration-300 ${darkMode
           ? 'bg-slate-950/90 border-slate-800/80'
           : 'bg-white/95 border-amber-200/60'
-      } ${scrolled ? 'shadow-xl shadow-black/30' : ''}`}
+        } ${scrolled ? 'shadow-xl shadow-black/30' : ''}`}
     >
       <div className="flex items-center justify-between h-full px-4 lg:px-6">
         {/* Left: Mobile Toggle + Logo */}

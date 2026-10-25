@@ -37,22 +37,22 @@ const DataTable = ({
   }, [data, sortField, sortDirection]);
 
   return (
-    <div className={`overflow-x-auto rounded-xl border border-slate-700/60 bg-slate-900/60 backdrop-blur-md ${className}`}>
+    <div className={`overflow-x-auto rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.2),0_0_25px_-5px_rgba(255,0,85,0.15)] ${className}`}>
       <table className="w-full text-left border-collapse text-sm">
         <thead>
-          <tr className="border-b border-slate-700/80 bg-slate-800/40 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <tr className="border-b border-white/10 bg-black/40 text-xs font-black uppercase tracking-wider text-slate-400">
             {columns.map((col) => (
               <th
                 key={col.key}
                 onClick={() => handleHeaderClick(col)}
-                className={`px-4 py-3.5 ${col.className || ''} ${
-                  col.sortable ? 'cursor-pointer select-none hover:text-amber-400' : ''
+                className={`px-4 py-4 ${col.className || ''} ${
+                  col.sortable ? 'cursor-pointer select-none hover:text-[#FFD700]' : ''
                 }`}
               >
                 <div className="flex items-center gap-1.5">
                   <span>{col.label}</span>
                   {col.sortable && sortField === col.key && (
-                    <span className="text-amber-400">{sortDirection === 'asc' ? '▲' : '▼'}</span>
+                    <span className="text-[#FFD700] drop-shadow-[0_0_6px_#FFD700]">{sortDirection === 'asc' ? '▲' : '▼'}</span>
                   )}
                 </div>
               </th>

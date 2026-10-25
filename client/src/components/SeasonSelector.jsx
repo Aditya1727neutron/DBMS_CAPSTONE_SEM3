@@ -12,7 +12,7 @@ const SeasonSelector = ({ className = '', showBadge = true }) => {
           id="season-selector-dropdown"
           value={selectedSeasonId}
           onChange={(e) => changeSeason(Number(e.target.value))}
-          className="appearance-none bg-slate-900/90 border border-slate-700/80 hover:border-amber-400/50 text-slate-100 text-sm font-semibold rounded-lg pl-3 pr-8 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-400/50 cursor-pointer transition-colors shadow-sm"
+          className="appearance-none bg-[#081028]/80 border border-white/15 hover:border-[#FFD700]/60 text-white text-xs font-extrabold rounded-xl pl-3.5 pr-9 py-2 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-[#FFD700]/50 cursor-pointer transition-all shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
         >
           {seasonsList.map((s) => (
             <option key={s.id} value={s.id} className="bg-slate-900 text-slate-100">

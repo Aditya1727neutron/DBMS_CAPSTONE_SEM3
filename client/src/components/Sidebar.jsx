@@ -108,9 +108,8 @@ function Sidebar() {
 
       {/* Sidebar Nav */}
       <aside
-        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-64 border-r border-slate-800/80 bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-64 border-r border-slate-800/80 bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div className="flex flex-col h-full p-4 overflow-y-auto">
           {/* Active Season Info Card */}
@@ -133,10 +132,9 @@ function Sidebar() {
                 end={item.path === '/'}
                 onClick={closeSidebar}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all group ${
-                    isActive
-                      ? 'bg-gradient-to-r from-[#004D98] to-[#A50044] text-white shadow-lg'
-                      : item.isAdmin
+                  `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all group ${isActive
+                    ? 'bg-gradient-to-r from-[#004D98] to-[#A50044] text-white shadow-lg'
+                    : item.isAdmin
                       ? 'text-amber-300/90 hover:bg-amber-400/10 hover:text-amber-200'
                       : 'text-slate-400 hover:bg-slate-900 hover:text-white'
                   }`
