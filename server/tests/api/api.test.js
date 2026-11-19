@@ -1,7 +1,12 @@
-import test from 'node:test';
+import test, { after } from 'node:test';
 import assert from 'node:assert';
 import request from 'supertest';
 import { app } from '../../src/app.js';
+import { pool } from '../../src/config/db.js';
+
+after(async () => {
+  await pool.end();
+});
 
 test('GET /api/health should return 200 with service information', async () => {
   const res = await request(app).get('/api/health');

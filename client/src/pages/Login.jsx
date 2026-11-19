@@ -37,19 +37,19 @@ function Login() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className={`w-full max-w-md p-8 rounded-3xl border shadow-2xl relative overflow-hidden ${
-        darkMode ? 'bg-slate-900/90 border-slate-800' : 'bg-white border-amber-200/60 shadow-xl'
-      }`}>
+      <div className="w-full max-w-md p-8 rounded-3xl border border-[#004D98]/40 bg-gradient-to-br from-[#060F2B]/95 via-[#030718]/98 to-[#081335]/95 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.35)] relative overflow-hidden">
         {/* Glow Accent Top */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#004D98] via-[#A50044] to-[#EDBB00]" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#004D98] via-[#EDBB00] to-[#0055B3] shadow-[0_0_12px_#EDBB00]" />
 
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#004D98] via-[#A50044] to-[#EDBB00] p-0.5 mx-auto mb-4 shadow-xl flex items-center justify-center">
-            <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-              <span className="text-amber-400 font-black text-xl">FCB</span>
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#004D98] via-[#0055B3] to-[#EDBB00] p-0.5 mx-auto mb-4 shadow-xl flex items-center justify-center">
+            <div className="w-full h-full bg-[#030718] rounded-[14px] flex items-center justify-center">
+              <span className="text-[#EDBB00] font-black text-xl drop-shadow-[0_0_8px_#EDBB00]">FCB</span>
             </div>
           </div>
-          <h1 className="text-2xl font-black text-white">Admin Control Center</h1>
+          <h1 className="text-2xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_15px_rgba(237,187,0,0.35)]">
+            Admin Control Center
+          </h1>
           <p className="text-xs text-slate-400 mt-1">
             Authenticate to manage teams, players, fixtures, and database operations.
           </p>
@@ -73,7 +73,7 @@ function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@fcbarcelona.cat"
-              className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:border-amber-400 outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-[#030718] border border-[#004D98]/40 hover:border-[#EDBB00]/60 text-white text-sm focus:border-[#EDBB00] focus:ring-2 focus:ring-[#EDBB00]/30 outline-none transition-colors"
             />
           </div>
 
@@ -87,25 +87,25 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••••••"
-              className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:border-amber-400 outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-[#030718] border border-[#004D98]/40 hover:border-[#EDBB00]/60 text-white text-sm focus:border-[#EDBB00] focus:ring-2 focus:ring-[#EDBB00]/30 outline-none transition-colors"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 via-rose-600 to-amber-500 hover:opacity-90 active:scale-[0.99] text-white font-extrabold text-sm shadow-lg shadow-rose-950/40 transition-all disabled:opacity-50"
+            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#004D98] to-[#0055B3] hover:from-[#0055B3] hover:to-[#1E70E0] active:scale-[0.99] text-[#EDBB00] font-black text-sm border border-[#0055B3] shadow-[0_0_25px_rgba(0,77,152,0.6)] transition-all disabled:opacity-50"
           >
             {loading ? 'Authenticating...' : 'Sign In as Administrator'}
           </button>
         </form>
 
-        <div className="mt-6 pt-6 border-t border-slate-800 text-center">
+        <div className="mt-6 pt-6 border-t border-[#004D98]/20 text-center">
           <p className="text-xs text-slate-400 mb-2 font-medium">Testing or evaluating the DBMS project?</p>
           <button
             type="button"
             onClick={handleFillDemo}
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-semibold text-xs border border-amber-400/30 transition-all active:scale-95 flex items-center justify-center gap-2 mx-auto"
+            className="px-4 py-2 rounded-xl bg-[#060F2B] hover:bg-[#004D98]/20 text-[#EDBB00] font-semibold text-xs border border-[#EDBB00]/40 transition-all active:scale-95 flex items-center justify-center gap-2 mx-auto shadow-[0_0_10px_rgba(237,187,0,0.2)]"
           >
             <span>⚡ Use Demo Admin Credentials</span>
           </button>

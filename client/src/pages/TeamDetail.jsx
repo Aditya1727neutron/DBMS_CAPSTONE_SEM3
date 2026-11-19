@@ -23,7 +23,7 @@ function TeamDetail() {
   const [activeTab, setActiveTab] = useState('squad');
   const [positionFilter, setPositionFilter] = useState('All');
 
-  const seasonId = selectedSeason?.season_id || 1;
+  const seasonId = selectedSeason?.id || 1;
 
   useEffect(() => {
     let isMounted = true;
@@ -86,36 +86,30 @@ function TeamDetail() {
   return (
     <div className="page-container py-6">
       {/* Club Banner Header */}
-      <div className={`p-6 md:p-8 rounded-3xl border mb-8 transition-all ${
-        isBarca
-          ? 'bg-gradient-to-r from-blue-950 via-slate-900 to-rose-950 border-amber-500/30 shadow-2xl shadow-rose-950/20'
-          : darkMode
-            ? 'bg-slate-900/90 border-slate-800'
-            : 'bg-white border-amber-200/60 shadow-lg'
-      }`}>
+      <div className="p-6 md:p-8 rounded-3xl border border-[#004D98]/40 bg-gradient-to-r from-[#004D98]/25 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.85),0_0_35px_rgba(0,77,152,0.35)] mb-8 transition-all">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-          <div className="w-28 h-28 p-2 rounded-2xl bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center shadow-inner">
+          <div className="w-28 h-28 p-2 rounded-2xl bg-[#030718] border border-[#004D98]/30 flex items-center justify-center shadow-inner">
             {team.crest_url ? (
               <img src={team.crest_url} alt={team.name} className="max-h-24 max-w-24 object-contain" />
             ) : (
-              <span className="text-3xl font-black text-amber-400">{team.short_name?.slice(0, 3) || 'FCB'}</span>
+              <span className="text-3xl font-black text-[#EDBB00]">{team.short_name?.slice(0, 3) || 'FCB'}</span>
             )}
           </div>
 
           <div className="flex-1 text-center md:text-left">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-2">
-              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+              <h1 className="text-3xl md:text-4xl font-black tracking-tight text-[#EDBB00] font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.35)]">
                 {team.name}
               </h1>
               {isBarca && (
-                <span className="px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-amber-400 text-slate-950">
+                <span className="px-3 py-1 rounded-full text-xs font-black tracking-wider uppercase bg-[#EDBB00] text-[#030718] shadow-[0_0_12px_#EDBB00]">
                   Primary Focus Club
                 </span>
               )}
             </div>
 
             <p className="text-sm text-slate-300 flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-1 mb-4">
-              <span>🏟️ {team.stadium_name || 'Home Stadium'}</span>
+              <span>🏟️ {team.stadium || 'Home Stadium'}</span>
               {team.stadium_capacity && (
                 <span>Cap: {Number(team.stadium_capacity).toLocaleString()}</span>
               )}
@@ -129,14 +123,14 @@ function TeamDetail() {
                   href={team.website}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-200 font-semibold border border-white/10 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-[#060F2B] hover:bg-[#004D98]/20 text-slate-200 font-semibold border border-[#004D98]/30 transition-colors"
                 >
                   Official Website ↗
                 </a>
               )}
               <Link
                 to={`/compare?teamA=${id}`}
-                className="px-3 py-1.5 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-300 font-semibold border border-amber-400/30 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-[#004D98]/60 hover:bg-[#0055B3] text-[#EDBB00] font-semibold border border-[#004D98]/50 shadow-[0_0_10px_rgba(0,77,152,0.3)] transition-colors"
               >
                 Compare Head-to-Head ⚔️
               </Link>
@@ -146,41 +140,41 @@ function TeamDetail() {
 
         {/* Season Summary Statistics Pill Grid */}
         {summary && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mt-8 pt-6 border-t border-white/10 text-center">
-            <div className="p-3 rounded-xl bg-black/30 border border-white/5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mt-8 pt-6 border-t border-[#004D98]/20 text-center">
+            <div className="p-3 rounded-xl bg-[#02040E]/80 border border-[#004D98]/30">
               <span className="text-[11px] text-slate-400 uppercase font-bold tracking-wider block">Rank</span>
-              <span className="text-2xl font-black text-amber-400">#{summary.rank_position || summary.position || '-'}</span>
+              <span className="text-2xl font-black text-[#EDBB00] drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">#{summary.standings?.position || '-'}</span>
             </div>
-            <div className="p-3 rounded-xl bg-black/30 border border-white/5">
+            <div className="p-3 rounded-xl bg-[#02040E]/80 border border-[#004D98]/30">
               <span className="text-[11px] text-slate-400 uppercase font-bold tracking-wider block">Points</span>
-              <span className="text-2xl font-black text-white">{summary.points ?? '-'}</span>
+              <span className="text-2xl font-black text-[#EDBB00] drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">{summary.standings?.points ?? '-'}</span>
             </div>
             <div className="p-3 rounded-xl bg-black/30 border border-white/5">
               <span className="text-[11px] text-slate-400 uppercase font-bold tracking-wider block">Played</span>
-              <span className="text-2xl font-black text-slate-200">{summary.played ?? 0}</span>
+              <span className="text-2xl font-black text-slate-200">{summary.standings?.played ?? 0}</span>
             </div>
             <div className="p-3 rounded-xl bg-black/30 border border-white/5">
               <span className="text-[11px] text-emerald-400 uppercase font-bold tracking-wider block">Won</span>
-              <span className="text-2xl font-black text-emerald-400">{summary.wins ?? 0}</span>
+              <span className="text-2xl font-black text-emerald-400">{summary.standings?.won ?? 0}</span>
             </div>
             <div className="p-3 rounded-xl bg-black/30 border border-white/5">
               <span className="text-[11px] text-slate-400 uppercase font-bold tracking-wider block">Drawn</span>
-              <span className="text-2xl font-black text-slate-300">{summary.draws ?? 0}</span>
+              <span className="text-2xl font-black text-slate-300">{summary.standings?.drawn ?? 0}</span>
             </div>
             <div className="p-3 rounded-xl bg-black/30 border border-white/5">
               <span className="text-[11px] text-rose-400 uppercase font-bold tracking-wider block">Lost</span>
-              <span className="text-2xl font-black text-rose-400">{summary.losses ?? 0}</span>
+              <span className="text-2xl font-black text-rose-400">{summary.standings?.lost ?? 0}</span>
             </div>
             <div className="p-3 rounded-xl bg-black/30 border border-white/5">
               <span className="text-[11px] text-slate-400 uppercase font-bold tracking-wider block">GF / GA</span>
-              <span className="text-lg font-black text-white">{summary.goals_for ?? 0} : {summary.goals_against ?? 0}</span>
+              <span className="text-lg font-black text-white">{summary.standings?.gf ?? 0} : {summary.standings?.ga ?? 0}</span>
             </div>
             <div className="p-3 rounded-xl bg-black/30 border border-white/5">
               <span className="text-[11px] text-slate-400 uppercase font-bold tracking-wider block">GD</span>
               <span className={`text-2xl font-black ${
-                (summary.goal_difference || 0) > 0 ? 'text-emerald-400' : (summary.goal_difference || 0) < 0 ? 'text-rose-400' : 'text-slate-300'
+                (summary.standings?.gd || 0) > 0 ? 'text-emerald-400' : (summary.standings?.gd || 0) < 0 ? 'text-rose-400' : 'text-slate-300'
               }`}>
-                {formatGoalDifference(summary.goal_difference || 0)}
+                {formatGoalDifference(summary.standings?.gd || 0)}
               </span>
             </div>
           </div>
@@ -262,11 +256,11 @@ function TeamDetail() {
                       }`}
                     >
                       <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-amber-400 font-black text-lg border border-slate-700">
-                        {p.squad_number || '#'}
+                        {p.shirt_number || '#'}
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="font-bold text-sm truncate text-white">
-                          {p.known_as || p.full_name || p.name}
+                          {p.name}
                         </h4>
                         <p className="text-xs text-slate-400 flex items-center gap-2 mt-0.5">
                           <span>{p.position}</span>

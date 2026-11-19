@@ -44,10 +44,10 @@ function LaLigaHub() {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#004D98]/30">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl font-black text-[#EDBB00] tracking-tight font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.35)]">
               La Liga EA Sports Hub
             </h1>
             {selectedSeason && <CoverageBadge coverage={selectedSeason.coverage} />}
@@ -66,9 +66,9 @@ function LaLigaHub() {
 
       {/* League Highlights Bar */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
-          <span className="text-xs uppercase font-bold text-slate-400 block mb-1">League Leader</span>
-          <p className="text-xl font-black text-amber-400 truncate">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+          <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">League Leader</span>
+          <p className="text-xl font-black text-[#EDBB00] truncate font-heading drop-shadow-[0_0_12px_rgba(237,187,0,0.4)]">
             {leader?.team_name || 'Leader TBD'}
           </p>
           <span className="text-xs text-slate-400 font-medium">
@@ -76,17 +76,17 @@ function LaLigaHub() {
           </span>
         </div>
 
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
-          <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Matches Completed</span>
-          <p className="text-xl font-black text-white">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+          <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Matches Completed</span>
+          <p className="text-xl font-black text-white font-heading">
             {Math.round(totalPlayed)} <span className="text-xs text-slate-400 font-normal">/ 380 fixtures</span>
           </p>
-          <span className="text-xs text-slate-400 font-medium">Season {selectedSeason?.label}</span>
+          <span className="text-xs text-[#0055B3] font-bold">Season {selectedSeason?.label}</span>
         </div>
 
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
-          <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Total Goals Scored</span>
-          <p className="text-xl font-black text-emerald-400">{totalGoals} Goals</p>
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+          <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Total Goals Scored</span>
+          <p className="text-xl font-black text-emerald-400 font-heading">{totalGoals} Goals</p>
           <span className="text-xs text-slate-400 font-medium">
             Avg {totalPlayed > 0 ? (totalGoals / totalPlayed).toFixed(2) : '0'} goals / match
           </span>

@@ -65,12 +65,12 @@ function App() {
     <ErrorBoundary>
       <BrowserRouter>
         <div
-          className={`min-h-screen flex flex-col relative overflow-hidden ${darkMode ? 'bg-barca-dark' : 'bg-barca-away-bg'
-            }`}
+          className="min-h-screen flex flex-col relative overflow-hidden bg-[#030718] text-slate-100 selection:bg-[#EDBB00] selection:text-[#030718]"
         >
           {/* Animated Blaugrana background orbs */}
           <div className="bg-orb bg-orb-1" />
           <div className="bg-orb bg-orb-2" />
+          <div className="bg-orb bg-orb-3" />
 
           {/* Persistent Navbar */}
           <Navbar />

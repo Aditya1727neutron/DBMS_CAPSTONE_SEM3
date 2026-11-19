@@ -37,31 +37,31 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
   const shirtNumber = player.shirt_number || player.shirtNumber;
 
   return (
-    <div className="p-5 group relative overflow-hidden flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 hover:border-white/25 backdrop-blur-2xl transition-all duration-300 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_40px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1.5">
-      {/* Top accent line (Royal Blue to Electric Gold to Scarlet Red) */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0066FF] via-[#FFD700] to-[#FF0055] opacity-50 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_12px_#FFD700]" />
+    <div className="p-5 group relative overflow-hidden flex flex-col justify-between rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 hover:border-[#0055B3]/60 backdrop-blur-2xl transition-all duration-300 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.4),0_0_20px_rgba(237,187,0,0.2)] hover:-translate-y-1.5">
+      {/* Top accent line (Blaugrana Royal Blue to Catalan Gold) */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#004D98] via-[#EDBB00] to-[#0055B3] opacity-60 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_12px_#EDBB00]" />
 
       <div>
         {/* Header: Avatar + Position + Favorite */}
         <div className="flex items-start justify-between mb-3.5">
           <div className="flex items-center gap-3">
             <div className="relative">
-              {player.image_url ? (
+              {player.image_url && !player.image_url.includes('unsplash.com') ? (
                 <img
                   src={player.image_url}
                   alt={player.name}
-                  className="w-13 h-13 rounded-2xl object-cover shadow-lg border border-white/15 group-hover:scale-105 transition-transform"
+                  className="w-13 h-13 rounded-2xl object-cover shadow-lg border border-[#004D98]/30 group-hover:scale-105 transition-transform"
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               ) : (
-                <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#0066FF] to-[#FF0055] p-[1px] shadow-lg transition-transform duration-300 group-hover:scale-105">
-                  <div className="w-full h-full bg-[#040816] rounded-[15px] flex items-center justify-center text-white font-black text-sm">
+                <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#004D98] to-[#0055B3] p-[1px] shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  <div className="w-full h-full bg-[#030718] rounded-[15px] flex items-center justify-center text-[#EDBB00] font-black text-sm">
                     {shirtNumber || initials}
                   </div>
                 </div>
               )}
               {shirtNumber && (
-                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#FFD700] text-[#030712] font-black text-[10px] flex items-center justify-center shadow-[0_0_10px_#FFD700]">
+                <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#EDBB00] text-[#030718] font-black text-[10px] flex items-center justify-center shadow-[0_0_10px_#EDBB00]">
                   {shirtNumber}
                 </span>
               )}
@@ -74,11 +74,11 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
 
           <button
             onClick={handleFavorite}
-            className="p-1.5 rounded-lg transition-all duration-200 hover:bg-slate-800 text-slate-400 hover:text-rose-400 active:scale-90"
+            className="p-1.5 rounded-lg transition-all duration-200 hover:bg-[#004D98]/20 text-slate-400 hover:text-[#EDBB00] active:scale-90"
             aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           >
             <svg
-              className={`w-5 h-5 transition-transform ${isFavorite ? 'text-rose-500 fill-current scale-110' : ''}`}
+              className={`w-5 h-5 transition-transform ${isFavorite ? 'text-[#EDBB00] fill-current scale-110 drop-shadow-[0_0_8px_#EDBB00]' : ''}`}
               fill={isFavorite ? 'currentColor' : 'none'}
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -90,7 +90,7 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
 
         {/* Player Name and Club */}
         <Link to={`/players/${playerId}`} className="block">
-          <h3 className="text-base font-bold text-white group-hover:text-amber-400 transition-colors font-sans truncate">
+          <h3 className="text-base font-bold text-white group-hover:text-[#EDBB00] transition-colors font-sans truncate">
             {player.name}
           </h3>
         </Link>
@@ -106,14 +106,14 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
           {player.team_short_name && (
             <>
               <span className="text-slate-600">•</span>
-              <span className="text-amber-400/90 font-medium truncate">{player.team_short_name}</span>
+              <span className="text-[#EDBB00] font-medium truncate">{player.team_short_name}</span>
             </>
           )}
         </div>
       </div>
 
       {/* Stats with Visual Bars */}
-      <div className="pt-3 border-t border-slate-800/80 space-y-2">
+      <div className="pt-3 border-t border-[#004D98]/20 space-y-2">
         {/* Apps & Minutes */}
         <div className="flex justify-between items-center text-xs">
           <span className="text-slate-400">Appearances</span>
@@ -126,11 +126,11 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
         <div>
           <div className="flex justify-between items-center text-xs mb-1">
             <span className="text-slate-400">Goals</span>
-            <span className="font-bold text-amber-400">{goals}</span>
+            <span className="font-bold text-[#EDBB00]">{goals}</span>
           </div>
-          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+          <div className="w-full bg-[#02040E] rounded-full h-1.5 overflow-hidden border border-[#004D98]/20">
             <div
-              className="bg-gradient-to-r from-amber-500 to-amber-300 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-[#EDBB00] to-[#FFE259] h-full rounded-full transition-all duration-500 shadow-[0_0_8px_#EDBB00]"
               style={{ width: `${Math.min((goals / Math.max(maxLeagueGoals, 1)) * 100, 100)}%` }}
             />
           </div>
@@ -140,11 +140,11 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
         <div>
           <div className="flex justify-between items-center text-xs mb-1">
             <span className="text-slate-400">Assists</span>
-            <span className="font-bold text-blue-400">{assists}</span>
+            <span className="font-bold text-[#60A5FA]">{assists}</span>
           </div>
-          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+          <div className="w-full bg-[#02040E] rounded-full h-1.5 overflow-hidden border border-[#004D98]/20">
             <div
-              className="bg-gradient-to-r from-blue-500 to-cyan-300 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-[#004D98] to-[#1E70E0] h-full rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(0,77,152,0.5)]"
               style={{ width: `${Math.min((assists / Math.max(maxLeagueAssists, 1)) * 100, 100)}%` }}
             />
           </div>
@@ -152,7 +152,7 @@ function PlayerCard({ player, maxLeagueGoals = 25, maxLeagueAssists = 15 }) {
 
         <Link
           to={`/players/${playerId}`}
-          className="mt-3 block text-center py-1.5 text-xs font-semibold text-slate-300 bg-slate-800/60 hover:bg-slate-700/80 hover:text-white rounded-lg transition-colors border border-slate-700/40"
+          className="mt-3 block text-center py-2 text-xs font-bold text-white bg-[#004D98]/60 hover:bg-[#0055B3] hover:text-[#EDBB00] rounded-xl transition-all border border-[#004D98]/50 shadow-[0_0_12px_rgba(0,77,152,0.3)]"
         >
           View Profile & Career Stats →
         </Link>

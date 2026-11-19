@@ -108,19 +108,20 @@ function Sidebar() {
 
       {/* Sidebar Nav */}
       <aside
-        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-64 border-r border-slate-800/80 bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
+        className={`fixed top-16 left-0 z-40 h-[calc(100vh-4rem)] w-64 border-r border-[#004D98]/30 bg-[#030718]/95 backdrop-blur-2xl transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
       >
         <div className="flex flex-col h-full p-4 overflow-y-auto">
           {/* Active Season Info Card */}
-          <div className="mb-3 p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm">
+          <div className="mb-3 p-3 rounded-xl bg-[#060F2B]/90 border border-[#004D98]/40 shadow-[0_0_20px_rgba(0,77,152,0.15)]">
             <div className="flex items-center justify-between text-xs">
               <span className="font-semibold text-slate-300">Active Campaign</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-400/20 text-amber-300">
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-[#EDBB00]/15 text-[#EDBB00] border border-[#EDBB00]/40 shadow-[0_0_8px_rgba(237,187,0,0.3)]">
                 {selectedSeason?.label || '2024/25'}
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 mt-1">La Liga EA Sports (PD)</p>
+            <p className="text-[11px] text-[#0055B3] font-bold mt-1">La Liga EA Sports (PD)</p>
           </div>
 
           {/* Navigation Links */}
@@ -132,11 +133,12 @@ function Sidebar() {
                 end={item.path === '/'}
                 onClick={closeSidebar}
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all group ${isActive
-                    ? 'bg-gradient-to-r from-[#004D98] to-[#A50044] text-white shadow-lg'
-                    : item.isAdmin
-                      ? 'text-amber-300/90 hover:bg-amber-400/10 hover:text-amber-200'
-                      : 'text-slate-400 hover:bg-slate-900 hover:text-white'
+                  `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all group ${
+                    isActive
+                      ? 'bg-gradient-to-r from-[#004D98] to-[#0055B3] text-[#EDBB00] shadow-[0_0_20px_rgba(0,77,152,0.5),inset_0_1px_0_rgba(237,187,0,0.3)] border border-[#0055B3]/60'
+                      : item.isAdmin
+                      ? 'text-[#EDBB00]/90 hover:bg-[#004D98]/20 hover:text-[#FFD100]'
+                      : 'text-slate-300 hover:bg-[#004D98]/15 hover:text-[#EDBB00]'
                   }`
                 }
               >
@@ -144,12 +146,12 @@ function Sidebar() {
                 <span className="truncate">{item.label}</span>
 
                 {item.label === 'Saved Favorites' && totalFavorites > 0 && (
-                  <span className="ml-auto px-2 py-0.5 text-xs font-bold rounded-full bg-[#A50044] text-white shadow">
+                  <span className="ml-auto px-2 py-0.5 text-xs font-black rounded-full bg-[#004D98] text-[#EDBB00] border border-[#EDBB00]/30 shadow">
                     {totalFavorites}
                   </span>
                 )}
                 {item.isAdmin && (
-                  <span className="ml-auto text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-amber-400 text-slate-950">
+                  <span className="ml-auto text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-[#EDBB00] text-[#030718]">
                     Live
                   </span>
                 )}
@@ -158,10 +160,12 @@ function Sidebar() {
           </nav>
 
           {/* Footer Motto */}
-          <div className="pt-3 border-t border-slate-800/80 mt-auto">
-            <div className="px-3.5 py-2.5 rounded-xl bg-gradient-to-br from-[#004D98]/15 to-[#A50044]/15 border border-slate-800/60">
-              <p className="text-xs font-black tracking-wide text-amber-400">Més que un club</p>
-              <p className="text-[10px] text-slate-500 mt-0.5">Relational DBMS Capstone</p>
+          <div className="pt-3 border-t border-[#004D98]/30 mt-auto">
+            <div className="px-3.5 py-2.5 rounded-xl bg-gradient-to-br from-[#004D98]/20 via-[#060F2B]/80 to-[#030718] border border-[#004D98]/40 shadow-inner">
+              <p className="text-xs font-black tracking-wide text-[#EDBB00] drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">
+                Més que un club
+              </p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Relational DBMS Capstone</p>
             </div>
           </div>
         </div>

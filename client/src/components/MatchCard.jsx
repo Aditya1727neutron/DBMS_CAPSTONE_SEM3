@@ -45,24 +45,24 @@ function MatchCard({ match, focusTeamId = 1 }) {
   return (
     <div
       onClick={handleClick}
-      className="p-5 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 hover:border-white/25 backdrop-blur-2xl transition-all duration-300 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_40px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1.5 group relative overflow-hidden cursor-pointer"
+      className="p-5 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 hover:border-[#0055B3]/60 backdrop-blur-2xl transition-all duration-300 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.4),0_0_20px_rgba(237,187,0,0.2)] hover:-translate-y-1.5 group relative overflow-hidden cursor-pointer"
     >
-      {/* Top Accent Gradient on Hover (Royal Blue to Electric Gold to Scarlet Red) */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0066FF] via-[#FFD700] to-[#FF0055] opacity-50 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_12px_#FFD700]" />
+      {/* Top Accent Gradient on Hover (Blaugrana Royal Blue to Catalan Gold) */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#004D98] via-[#EDBB00] to-[#0055B3] opacity-60 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_12px_#EDBB00]" />
 
       {/* Top Row: Matchday & Favorite */}
       <div className="flex items-center justify-between mb-4">
-        <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-[#0066FF]/15 text-[#60A5FA] border border-[#0066FF]/35 shadow-[0_0_12px_rgba(0,102,255,0.25)]">
+        <span className="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full bg-[#004D98]/20 text-[#60A5FA] border border-[#004D98]/40 shadow-[0_0_12px_rgba(0,77,152,0.3)]">
           Matchday {match.matchday || '—'}
         </span>
 
         <button
           onClick={handleFavorite}
-          className="p-1.5 rounded-xl transition-all hover:bg-white/10 text-slate-400 hover:text-[#FF0055]"
+          className="p-1.5 rounded-xl transition-all hover:bg-white/10 text-slate-400 hover:text-[#EDBB00]"
           aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
         >
           <svg
-            className={`w-4 h-4 transition-transform ${isFavorite ? 'text-[#FF0055] fill-current scale-110 drop-shadow-[0_0_8px_#FF0055]' : ''}`}
+            className={`w-4 h-4 transition-transform ${isFavorite ? 'text-[#EDBB00] fill-current scale-110 drop-shadow-[0_0_8px_#EDBB00]' : ''}`}
             fill={isFavorite ? 'currentColor' : 'none'}
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -76,7 +76,7 @@ function MatchCard({ match, focusTeamId = 1 }) {
       <div className="flex items-center justify-between gap-3 my-2">
         {/* Home Club */}
         <div className={`flex-1 flex flex-col items-center text-center ${isFocusHome ? 'font-bold' : 'opacity-85'}`}>
-          <div className="w-13 h-13 mb-2 p-2 rounded-2xl bg-[#040816]/90 border border-white/10 flex items-center justify-center shadow-inner group-hover:scale-105 group-hover:border-[#0066FF]/40 transition-all">
+          <div className="w-13 h-13 mb-2 p-2 rounded-2xl bg-[#030718] border border-[#004D98]/30 flex items-center justify-center shadow-inner group-hover:scale-105 group-hover:border-[#0055B3]/60 transition-all">
             {homeCrest ? (
               <img src={homeCrest} alt={homeName} className="w-9 h-9 object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
             ) : (
@@ -85,18 +85,18 @@ function MatchCard({ match, focusTeamId = 1 }) {
           </div>
           <p className="text-xs font-bold text-white truncate max-w-[100px]">{homeName}</p>
           {isFocusHome && (
-            <span className="text-[9px] font-black tracking-widest text-[#FFD700] uppercase mt-0.5 drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">BARÇA</span>
+            <span className="text-[9px] font-black tracking-widest text-[#EDBB00] uppercase mt-0.5 drop-shadow-[0_0_8px_rgba(237,187,0,0.5)]">BARÇA</span>
           )}
         </div>
 
-        {/* Score / Status with Electric Gold Highlights */}
+        {/* Score / Status with Catalan Gold Highlights */}
         <div className="flex flex-col items-center px-2 shrink-0">
           {isFinished ? (
             <>
-              <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-2xl bg-black/50 border border-white/10 shadow-inner">
-                <span className="text-2xl font-black text-[#FFD700] font-heading drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">{homeScore ?? 0}</span>
+              <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-2xl bg-[#02040E]/80 border border-[#004D98]/40 shadow-inner">
+                <span className="text-2xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_10px_rgba(237,187,0,0.4)]">{homeScore ?? 0}</span>
                 <span className="text-slate-500 font-bold">:</span>
-                <span className="text-2xl font-black text-[#FFD700] font-heading drop-shadow-[0_0_10px_rgba(255,215,0,0.4)]">{awayScore ?? 0}</span>
+                <span className="text-2xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_10px_rgba(237,187,0,0.4)]">{awayScore ?? 0}</span>
               </div>
               {result && (
                 <span className={`mt-2 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider ${getResultBadgeClass(result)}`}>
@@ -107,7 +107,7 @@ function MatchCard({ match, focusTeamId = 1 }) {
           ) : (
             <div className="flex flex-col items-center">
               <span className="text-xs font-semibold text-slate-300">{formatMatchTime(dateStr) || 'TBD'}</span>
-              <span className="text-[10px] font-black uppercase tracking-wider mt-1.5 px-2.5 py-0.5 rounded-full bg-[#FFD700]/15 text-[#FFD700] border border-[#FFD700]/40 shadow-[0_0_10px_rgba(255,215,0,0.25)]">
+              <span className="text-[10px] font-black uppercase tracking-wider mt-1.5 px-2.5 py-0.5 rounded-full bg-[#EDBB00]/15 text-[#EDBB00] border border-[#EDBB00]/40 shadow-[0_0_10px_rgba(237,187,0,0.25)]">
                 UPCOMING
               </span>
             </div>
@@ -116,7 +116,7 @@ function MatchCard({ match, focusTeamId = 1 }) {
 
         {/* Away Club */}
         <div className={`flex-1 flex flex-col items-center text-center ${isFocusAway ? 'font-bold' : 'opacity-85'}`}>
-          <div className="w-12 h-12 mb-2 p-1.5 rounded-xl bg-slate-800 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 mb-2 p-1.5 rounded-xl bg-[#030718] border border-[#004D98]/30 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
             {awayCrest ? (
               <img src={awayCrest} alt={awayName} className="w-full h-full object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
             ) : (
@@ -125,13 +125,13 @@ function MatchCard({ match, focusTeamId = 1 }) {
           </div>
           <p className="text-xs font-semibold text-slate-200 truncate max-w-[100px]">{awayName}</p>
           {isFocusAway && (
-            <span className="text-[9px] font-bold tracking-wider text-amber-400 mt-0.5">BARÇA</span>
+            <span className="text-[9px] font-bold tracking-wider text-[#EDBB00] mt-0.5">BARÇA</span>
           )}
         </div>
       </div>
 
       {/* Date & Venue Footer */}
-      <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="mt-4 pt-3 border-t border-[#004D98]/20 flex items-center justify-between text-[11px] text-slate-400">
         <span>{formatMatchDate(dateStr)}</span>
         <span className="truncate max-w-[110px] text-right">{match.venue || 'La Liga'}</span>
       </div>

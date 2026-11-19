@@ -48,14 +48,14 @@ function Favorites() {
 
   return (
     <div className="page-container py-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-[#004D98]/30 pb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-[#004D98]/20 text-[#60A5FA] border border-[#004D98]/40 shadow-[0_0_10px_rgba(0,77,152,0.25)]">
               Personalized Shortlist
             </span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white">Saved Favorites</h1>
+          <h1 className="text-3xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.35)]">Saved Favorites</h1>
           <p className="text-sm text-slate-400 mt-1">
             {total} item{total !== 1 ? 's' : ''} bookmarked in local storage
           </p>
@@ -64,11 +64,7 @@ function Favorites() {
         {total > 0 && (
           <button
             onClick={handleClear}
-            className={`text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 border ${
-              darkMode
-                ? 'text-rose-400 border-rose-500/30 hover:bg-rose-500/10'
-                : 'text-rose-600 border-rose-500/30 hover:bg-rose-500/5'
-            }`}
+            className="text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-200 active:scale-95 border text-rose-400 border-rose-500/30 hover:bg-rose-500/10"
           >
             Clear All Favorites
           </button>
@@ -86,10 +82,8 @@ function Favorites() {
             onClick={() => setTab(t.id)}
             className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
               tab === t.id
-                ? 'bg-gradient-to-r from-blue-600 to-rose-600 text-white shadow-lg shadow-rose-900/30'
-                : darkMode
-                  ? 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
-                  : 'bg-slate-200 text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-[#004D98] to-[#0055B3] text-[#EDBB00] shadow-[0_0_20px_rgba(0,77,152,0.5),inset_0_1px_0_rgba(237,187,0,0.3)] border border-[#0055B3]/60'
+                : 'bg-[#060F2B]/80 text-slate-300 hover:text-[#EDBB00] hover:bg-[#004D98]/15 border border-[#004D98]/20'
             }`}
           >
             {t.label}
@@ -107,8 +101,8 @@ function Favorites() {
               ))}
             </div>
           ) : (
-            <div className={`p-12 text-center rounded-3xl border ${darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-slate-200'}`}>
-              <div className="w-16 h-16 rounded-2xl bg-slate-800/80 mx-auto mb-4 flex items-center justify-center text-rose-500 text-2xl border border-slate-700">
+            <div className="p-12 text-center rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+              <div className="w-16 h-16 rounded-2xl bg-[#030718] mx-auto mb-4 flex items-center justify-center text-[#EDBB00] text-2xl border border-[#004D98]/30">
                 ❤️
               </div>
               <h3 className="text-lg font-bold text-white mb-1">No favorite matches bookmarked</h3>
@@ -117,7 +111,7 @@ function Favorites() {
               </p>
               <Link
                 to="/matches"
-                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-400 text-slate-950 hover:bg-amber-300 transition-colors inline-block"
+                className="btn-catalan-gold inline-flex"
               >
                 Browse All Matches ⚽
               </Link>
@@ -131,8 +125,8 @@ function Favorites() {
               ))}
             </div>
           ) : (
-            <div className={`p-12 text-center rounded-3xl border ${darkMode ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-slate-200'}`}>
-              <div className="w-16 h-16 rounded-2xl bg-slate-800/80 mx-auto mb-4 flex items-center justify-center text-rose-500 text-2xl border border-slate-700">
+            <div className="p-12 text-center rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+              <div className="w-16 h-16 rounded-2xl bg-[#030718] mx-auto mb-4 flex items-center justify-center text-[#EDBB00] text-2xl border border-[#004D98]/30">
                 ⭐
               </div>
               <h3 className="text-lg font-bold text-white mb-1">No favorite players bookmarked</h3>
@@ -141,7 +135,7 @@ function Favorites() {
               </p>
               <Link
                 to="/players"
-                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-400 text-slate-950 hover:bg-amber-300 transition-colors inline-block"
+                className="btn-catalan-gold inline-flex"
               >
                 View Squad Roster 👥
               </Link>

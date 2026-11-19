@@ -37,29 +37,29 @@ const DataTable = ({
   }, [data, sortField, sortDirection]);
 
   return (
-    <div className={`overflow-x-auto rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.2),0_0_25px_-5px_rgba(255,0,85,0.15)] ${className}`}>
+    <div className={`overflow-x-auto rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] ${className}`}>
       <table className="w-full text-left border-collapse text-sm">
         <thead>
-          <tr className="border-b border-white/10 bg-black/40 text-xs font-black uppercase tracking-wider text-slate-400">
+          <tr className="border-b border-[#004D98]/20 bg-[#02040E]/60 text-xs font-black uppercase tracking-wider text-slate-400 font-heading">
             {columns.map((col) => (
               <th
                 key={col.key}
                 onClick={() => handleHeaderClick(col)}
                 className={`px-4 py-4 ${col.className || ''} ${
-                  col.sortable ? 'cursor-pointer select-none hover:text-[#FFD700]' : ''
+                  col.sortable ? 'cursor-pointer select-none hover:text-[#EDBB00]' : ''
                 }`}
               >
                 <div className="flex items-center gap-1.5">
                   <span>{col.label}</span>
                   {col.sortable && sortField === col.key && (
-                    <span className="text-[#FFD700] drop-shadow-[0_0_6px_#FFD700]">{sortDirection === 'asc' ? '▲' : '▼'}</span>
+                    <span className="text-[#EDBB00] drop-shadow-[0_0_6px_#EDBB00]">{sortDirection === 'asc' ? '▲' : '▼'}</span>
                   )}
                 </div>
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-800 text-slate-200">
+        <tbody className="divide-y divide-[#004D98]/10 text-slate-200">
           {sortedData.length === 0 ? (
             <tr>
               <td colSpan={columns.length} className="px-4 py-8 text-center text-slate-400">
@@ -71,7 +71,7 @@ const DataTable = ({
               <tr
                 key={row[keyField] || idx}
                 onClick={() => onRowClick && onRowClick(row)}
-                className={`transition-colors hover:bg-slate-800/50 ${
+                className={`transition-colors hover:bg-[#004D98]/15 ${
                   onRowClick ? 'cursor-pointer' : ''
                 }`}
               >

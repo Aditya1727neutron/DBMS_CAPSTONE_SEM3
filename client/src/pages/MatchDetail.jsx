@@ -81,13 +81,13 @@ function MatchDetail() {
       </div>
 
       {/* Match Scoreboard Banner */}
-      <div className="p-6 sm:p-10 rounded-3xl border border-slate-800 bg-gradient-to-r from-[#004D98]/25 via-slate-900/90 to-[#A50044]/25 backdrop-blur-md shadow-2xl relative overflow-hidden">
+      <div className="p-6 sm:p-10 rounded-3xl border border-[#004D98]/40 bg-gradient-to-r from-[#004D98]/25 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.85),0_0_35px_rgba(0,77,152,0.35)] relative overflow-hidden">
         {/* Top Info */}
         <div className="flex items-center justify-between text-xs text-slate-400 mb-6">
-          <span className="font-semibold text-amber-400 tracking-wider uppercase">
+          <span className="font-extrabold text-[#EDBB00] tracking-wider uppercase drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">
             La Liga EA Sports • Matchday {match.matchday} ({match.season_label})
           </span>
-          <span className="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 font-mono">
+          <span className="px-2.5 py-1 rounded-full bg-[#02040E] border border-[#004D98]/40 font-mono text-[#EDBB00]">
             {formatMatchDate(match.kickoff_utc)}
           </span>
         </div>
@@ -96,14 +96,14 @@ function MatchDetail() {
         <div className="flex items-center justify-around py-4">
           {/* Home Team */}
           <div className="flex flex-col items-center text-center flex-1">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 p-2 bg-slate-800/80 rounded-2xl flex items-center justify-center shadow-xl mb-3">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 p-2 bg-[#02040E] border border-[#004D98]/30 rounded-2xl flex items-center justify-center shadow-xl mb-3">
               {match.home_crest ? (
                 <img src={match.home_crest} alt={match.home_name} className="w-full h-full object-contain" />
               ) : (
                 <span className="text-xl font-bold text-slate-200">{match.home_name?.substring(0, 3)}</span>
               )}
             </div>
-            <h2 className="text-base sm:text-xl font-extrabold text-white font-sans">{match.home_name}</h2>
+            <h2 className="text-base sm:text-xl font-extrabold text-white font-heading">{match.home_name}</h2>
             <span className="text-xs text-slate-400 mt-1">{match.home_stadium || 'Home Stadium'}</span>
           </div>
 
@@ -111,14 +111,14 @@ function MatchDetail() {
           <div className="flex flex-col items-center px-4 shrink-0">
             {isFinished ? (
               <div className="flex items-center gap-3">
-                <span className="text-4xl sm:text-6xl font-black text-white font-sans">{match.home_score ?? 0}</span>
-                <span className="text-2xl sm:text-4xl text-slate-600 font-light">–</span>
-                <span className="text-4xl sm:text-6xl font-black text-white font-sans">{match.away_score ?? 0}</span>
+                <span className="text-4xl sm:text-6xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.45)]">{match.home_score ?? 0}</span>
+                <span className="text-2xl sm:text-4xl text-[#0055B3] font-light">–</span>
+                <span className="text-4xl sm:text-6xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.45)]">{match.away_score ?? 0}</span>
               </div>
             ) : (
               <div className="flex flex-col items-center">
-                <span className="text-lg font-bold text-amber-400 font-mono">{formatMatchTime(match.kickoff_utc) || 'TBD'}</span>
-                <span className="mt-1 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/10 text-amber-300 border border-amber-400/30">
+                <span className="text-lg font-bold text-[#EDBB00] font-mono">{formatMatchTime(match.kickoff_utc) || 'TBD'}</span>
+                <span className="mt-1 px-3 py-1 rounded-full text-xs font-black bg-[#EDBB00]/15 text-[#EDBB00] border border-[#EDBB00]/40 shadow-[0_0_10px_rgba(237,187,0,0.25)]">
                   SCHEDULED
                 </span>
               </div>
@@ -132,30 +132,30 @@ function MatchDetail() {
 
           {/* Away Team */}
           <div className="flex flex-col items-center text-center flex-1">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 p-2 bg-slate-800/80 rounded-2xl flex items-center justify-center shadow-xl mb-3">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 p-2 bg-[#02040E] border border-[#004D98]/30 rounded-2xl flex items-center justify-center shadow-xl mb-3">
               {match.away_crest ? (
                 <img src={match.away_crest} alt={match.away_name} className="w-full h-full object-contain" />
               ) : (
                 <span className="text-xl font-bold text-slate-200">{match.away_name?.substring(0, 3)}</span>
               )}
             </div>
-            <h2 className="text-base sm:text-xl font-extrabold text-white font-sans">{match.away_name}</h2>
+            <h2 className="text-base sm:text-xl font-extrabold text-white font-heading">{match.away_name}</h2>
             <span className="text-xs text-slate-400 mt-1">{match.away_stadium || 'Away Stadium'}</span>
           </div>
         </div>
 
         {/* Footer info: Venue & Referee */}
-        <div className="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
-          <span>🏟️ Venue: <strong className="text-slate-300">{match.venue || match.home_stadium || 'Estadio'}</strong></span>
-          <span>⚖️ Match Referee: <strong className="text-slate-300">{match.referee || 'Official La Liga Committee'}</strong></span>
+        <div className="mt-6 pt-4 border-t border-[#004D98]/20 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+          <span>🏟️ Venue: <strong className="text-slate-200">{match.venue || match.home_stadium || 'Estadio'}</strong></span>
+          <span>⚖️ Match Referee: <strong className="text-slate-200">{match.referee || 'Official La Liga Committee'}</strong></span>
         </div>
       </div>
 
       {/* Player Match Statistics Tables (Relational DBMS) */}
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h3 className="text-xl font-extrabold text-white flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+          <h3 className="text-xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_12px_rgba(237,187,0,0.3)] flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#004D98]" />
             Verified Match Lineups & Player Event Stats
           </h3>
           <span className="text-xs text-slate-400">

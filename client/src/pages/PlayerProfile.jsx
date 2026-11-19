@@ -79,7 +79,7 @@ function PlayerProfile() {
       </div>
 
       {/* Hero Profile Banner */}
-      <div className="p-6 sm:p-8 rounded-3xl border border-slate-800 bg-gradient-to-r from-[#004D98]/20 via-slate-900/90 to-[#A50044]/20 backdrop-blur-md shadow-2xl relative overflow-hidden">
+      <div className="p-6 sm:p-8 rounded-3xl border border-[#004D98]/40 bg-gradient-to-r from-[#004D98]/25 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.85),0_0_35px_rgba(0,77,152,0.35)] relative overflow-hidden">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 relative z-10">
           {/* Avatar */}
           <div className="relative shrink-0">
@@ -87,15 +87,15 @@ function PlayerProfile() {
               <img
                 src={player.image_url}
                 alt={player.name}
-                className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover shadow-2xl border-2 border-slate-700/80"
+                className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover shadow-2xl border-2 border-[#004D98]/40"
               />
             ) : (
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-gradient-to-br from-[#004D98] to-[#A50044] flex items-center justify-center text-white text-3xl font-extrabold shadow-2xl">
+              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-gradient-to-br from-[#004D98] to-[#0055B3] flex items-center justify-center text-[#EDBB00] text-3xl font-black shadow-2xl">
                 {player.name.substring(0, 2).toUpperCase()}
               </div>
             )}
             {seasonHistory[0]?.shirt_number && (
-              <span className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-amber-400 text-slate-950 font-black text-sm flex items-center justify-center shadow-lg">
+              <span className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-[#EDBB00] text-[#030718] font-black text-sm flex items-center justify-center shadow-[0_0_12px_#EDBB00]">
                 #{seasonHistory[0].shirt_number}
               </span>
             )}
@@ -107,22 +107,22 @@ function PlayerProfile() {
               <span className={`text-xs font-bold px-3 py-1 rounded-full border ${getPositionColor(seasonHistory[0]?.position)}`}>
                 {seasonHistory[0]?.position || 'Squad Member'}
               </span>
-              <span className="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+              <span className="text-xs px-3 py-1 rounded-full bg-[#02040E] text-slate-300 border border-[#004D98]/30">
                 {player.nationality || 'Spain'}
               </span>
               {age && (
-                <span className="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                <span className="text-xs px-3 py-1 rounded-full bg-[#02040E] text-slate-300 border border-[#004D98]/30">
                   {age} Years Old
                 </span>
               )}
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-black text-white font-sans tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.35)] tracking-tight">
               {player.name}
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-400">
-              Primary Club: <strong className="text-amber-400">{seasonHistory[0]?.team_name || 'FC Barcelona'}</strong> • Date of Birth: {player.date_of_birth || 'N/A'}
+              Primary Club: <strong className="text-[#EDBB00]">{seasonHistory[0]?.team_name || 'FC Barcelona'}</strong> • Date of Birth: {player.date_of_birth || 'N/A'}
             </p>
 
             <div className="pt-2">
@@ -131,7 +131,7 @@ function PlayerProfile() {
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-lg active:scale-95 ${
                   isFavorite
                     ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                    : 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-amber-400/40'
+                    : 'bg-[#004D98]/60 hover:bg-[#0055B3] text-white hover:text-[#EDBB00] border border-[#004D98]/50 shadow-[0_0_12px_rgba(0,77,152,0.3)]'
                 }`}
               >
                 <svg
@@ -151,33 +151,33 @@ function PlayerProfile() {
 
       {/* Career Aggregates Grid */}
       <div>
-        <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+        <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2 font-heading">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#EDBB00]" />
           Career Totals (Database Aggregated)
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 text-center">
-            <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Appearances</span>
+          <div className="p-4 rounded-2xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 text-center shadow-lg">
+            <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Appearances</span>
             <span className="text-2xl font-black text-white">{careerTotals?.appearances || 0}</span>
           </div>
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 text-center">
-            <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Starts</span>
+          <div className="p-4 rounded-2xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 text-center shadow-lg">
+            <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Starts</span>
             <span className="text-2xl font-black text-slate-300">{careerTotals?.starts || 0}</span>
           </div>
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 text-center">
-            <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Minutes</span>
+          <div className="p-4 rounded-2xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 text-center shadow-lg">
+            <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Minutes</span>
             <span className="text-2xl font-black text-white">{careerTotals?.minutes || 0}'</span>
           </div>
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 text-center">
-            <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Goals</span>
-            <span className="text-2xl font-black text-amber-400">{careerTotals?.goals || 0}</span>
+          <div className="p-4 rounded-2xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 text-center shadow-lg">
+            <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Goals</span>
+            <span className="text-2xl font-black text-[#EDBB00] drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">{careerTotals?.goals || 0}</span>
           </div>
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 text-center">
-            <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Assists</span>
-            <span className="text-2xl font-black text-blue-400">{careerTotals?.assists || 0}</span>
+          <div className="p-4 rounded-2xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 text-center shadow-lg">
+            <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Assists</span>
+            <span className="text-2xl font-black text-[#60A5FA]">{careerTotals?.assists || 0}</span>
           </div>
-          <div className="p-4 rounded-xl border border-slate-800 bg-slate-900/60 text-center">
-            <span className="text-xs uppercase font-bold text-slate-400 block mb-1">Cards (🟨/🟥)</span>
+          <div className="p-4 rounded-2xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 text-center shadow-lg">
+            <span className="text-xs uppercase font-extrabold text-slate-400 block mb-1">Cards (🟨/🟥)</span>
             <span className="text-2xl font-black text-slate-300">
               {careerTotals?.yellow || 0} / {careerTotals?.red || 0}
             </span>

@@ -62,10 +62,10 @@ function Dashboard() {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Header Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#004D98]/30">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+            <h1 className="text-2xl sm:text-3xl font-black text-[#EDBB00] tracking-tight font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.35)]">
               Camp Nou Dashboard
             </h1>
             {selectedSeason && <CoverageBadge coverage={selectedSeason.coverage} />}
@@ -79,7 +79,7 @@ function Dashboard() {
           <SeasonSelector />
           <button
             onClick={loadDashboardData}
-            className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 hover:border-amber-400/40 transition-colors"
+            className="p-2 rounded-xl bg-[#004D98] hover:bg-[#0055B3] text-[#EDBB00] border border-[#0055B3] shadow-[0_0_15px_rgba(0,77,152,0.4)] transition-all"
             title="Refresh from MySQL database"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -94,25 +94,25 @@ function Dashboard() {
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {/* League Standing */}
-        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] hover:border-[#0055B3]/60 hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.4),0_0_20px_rgba(237,187,0,0.2)] hover:-translate-y-1 transition-all relative overflow-hidden group">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">La Liga Standing</span>
-            <span className="px-3 py-1 rounded-full bg-[#FFD700] text-[#030712] font-black text-xs shadow-[0_0_12px_#FFD700]">
+            <span className="px-3 py-1 rounded-full bg-[#EDBB00] text-[#030718] font-black text-xs shadow-[0_0_12px_#EDBB00]">
               #{standings?.position || '—'}
             </span>
           </div>
-          <p className="text-3xl sm:text-4xl font-black text-[#FFD700] font-heading drop-shadow-[0_0_12px_rgba(255,215,0,0.4)]">
+          <p className="text-3xl sm:text-4xl font-black text-[#EDBB00] font-heading drop-shadow-[0_0_16px_rgba(237,187,0,0.45)]">
             {standings?.points ?? 0} <span className="text-xs font-bold text-slate-400">PTS</span>
           </p>
           <div className="flex items-center gap-2 mt-2 text-xs text-slate-400">
             <span>{standings?.played ?? 0} played</span>
             <span>•</span>
-            <span className="text-[#FFD700] font-bold">{standings?.won ?? 0} wins</span>
+            <span className="text-[#EDBB00] font-bold">{standings?.won ?? 0} wins</span>
           </div>
         </div>
 
         {/* Win Rate */}
-        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] hover:border-[#0055B3]/60 hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.4),0_0_20px_rgba(237,187,0,0.2)] hover:-translate-y-1 transition-all relative overflow-hidden group">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">Win Rate</span>
             <span className="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-black text-xs shadow-[0_0_10px_rgba(16,185,129,0.3)]">
@@ -125,15 +125,15 @@ function Dashboard() {
           <div className="flex items-center gap-2 mt-2 text-xs text-slate-400">
             <span className="text-emerald-400 font-bold">{standings?.won ?? 0}W</span>
             <span>{standings?.drawn ?? 0}D</span>
-            <span className="text-[#FF0055] font-bold">{standings?.lost ?? 0}L</span>
+            <span className="text-[#0055B3] font-bold">{standings?.lost ?? 0}L</span>
           </div>
         </div>
 
         {/* Goals Scored & Conceded */}
-        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] hover:border-[#0055B3]/60 hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.4),0_0_20px_rgba(237,187,0,0.2)] hover:-translate-y-1 transition-all relative overflow-hidden group">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">Goals (GF / GA)</span>
-            <span className="w-8 h-8 rounded-xl bg-[#0066FF]/15 text-[#60A5FA] border border-[#0066FF]/30 flex items-center justify-center font-bold text-xs shadow-[0_0_10px_rgba(0,102,255,0.3)]">
+            <span className="w-8 h-8 rounded-xl bg-[#004D98]/20 text-[#60A5FA] border border-[#004D98]/40 flex items-center justify-center font-bold text-xs shadow-[0_0_10px_rgba(0,77,152,0.3)]">
               ⚽
             </span>
           </div>
@@ -146,34 +146,35 @@ function Dashboard() {
         </div>
 
         {/* Goal Difference */}
-        <div className="p-6 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/85 via-[#040816]/90 to-[#0c0818]/85 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.25),0_0_25px_-5px_rgba(255,0,85,0.2)] hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,102,255,0.4),0_0_35px_rgba(255,0,85,0.3)] hover:-translate-y-1 transition-all relative overflow-hidden group">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)] hover:border-[#0055B3]/60 hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.9),0_0_35px_rgba(0,77,152,0.4),0_0_20px_rgba(237,187,0,0.2)] hover:-translate-y-1 transition-all relative overflow-hidden group">
           <div className="flex items-center justify-between mb-3">
             <span className="text-xs uppercase font-extrabold tracking-wider text-slate-400">Goal Difference</span>
-            <span className="w-8 h-8 rounded-xl bg-[#FF0055]/15 text-[#FB7185] border border-[#FF0055]/30 flex items-center justify-center font-black text-xs shadow-[0_0_10px_rgba(255,0,85,0.3)]">
+            <span className="w-8 h-8 rounded-xl bg-[#004D98]/20 text-[#60A5FA] border border-[#004D98]/40 flex items-center justify-center font-black text-xs shadow-[0_0_10px_rgba(0,77,152,0.3)]">
               GD
             </span>
           </div>
           <p
             className={`text-3xl sm:text-4xl font-black font-heading ${
-              Number(standings?.gd || 0) >= 0 ? 'text-emerald-400' : 'text-[#FF0055]'
+              Number(standings?.gd || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'
             }`}
           >
             {formatGoalDifference(standings?.gd)}
           </p>
           <p className="text-xs text-slate-400 mt-2 font-medium">
-            Clean Sheets: <span className="text-[#FFD700] font-black">{summary?.clean_sheets || 0}</span>
+            Clean Sheets: <span className="text-[#EDBB00] font-black">{summary?.clean_sheets || 0}</span>
           </p>
         </div>
       </div>
 
       {/* Next Match & Form Guide Banner */}
+      {/* Next Match & Form Guide Banner */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Next Scheduled Fixture with Glowing Border */}
-        <div className="lg:col-span-2 p-7 rounded-3xl border border-white/15 bg-gradient-to-br from-[#0066FF]/20 via-[#040816]/90 to-[#FF0055]/20 backdrop-blur-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8),0_0_35px_rgba(0,102,255,0.3),0_0_30px_rgba(255,0,85,0.25)] relative overflow-hidden flex flex-col justify-between">
+        <div className="lg:col-span-2 p-7 rounded-3xl border border-[#004D98]/40 bg-gradient-to-br from-[#004D98]/25 via-[#030718]/95 to-[#060F2B]/90 backdrop-blur-2xl shadow-[0_20px_60px_-10px_rgba(0,0,0,0.85),0_0_35px_rgba(0,77,152,0.35)] relative overflow-hidden flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs uppercase tracking-wider font-extrabold text-amber-400 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+              <span className="text-xs uppercase tracking-wider font-extrabold text-[#EDBB00] flex items-center gap-1.5 drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">
+                <span className="w-2 h-2 rounded-full bg-[#EDBB00] animate-ping" />
                 Next Official Fixture
               </span>
               <span className="text-xs text-slate-400 font-mono">Matchday {nextMatch?.matchday || '—'}</span>
@@ -182,7 +183,7 @@ function Dashboard() {
             {nextMatch ? (
               <div className="flex items-center justify-around py-4">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 p-2 bg-slate-800 rounded-2xl flex items-center justify-center shadow-md mb-2">
+                  <div className="w-14 h-14 p-2 bg-[#02040E] border border-[#004D98]/30 rounded-2xl flex items-center justify-center shadow-md mb-2">
                     {nextMatch.home_crest ? (
                       <img src={nextMatch.home_crest} alt={nextMatch.home_name} className="w-full h-full object-contain" />
                     ) : (
@@ -193,13 +194,13 @@ function Dashboard() {
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <span className="text-xl font-bold text-slate-500">VS</span>
-                  <span className="text-xs text-amber-400 font-semibold mt-1">{nextMatch.venue || 'Estadi Olímpic'}</span>
+                  <span className="text-xl font-black text-[#0055B3]">VS</span>
+                  <span className="text-xs text-[#EDBB00] font-semibold mt-1">{nextMatch.venue || 'Estadi Olímpic'}</span>
                   <span className="text-[11px] text-slate-400 mt-0.5">{nextMatch.kickoff_utc || 'Upcoming'}</span>
                 </div>
 
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-14 h-14 p-2 bg-slate-800 rounded-2xl flex items-center justify-center shadow-md mb-2">
+                  <div className="w-14 h-14 p-2 bg-[#02040E] border border-[#004D98]/30 rounded-2xl flex items-center justify-center shadow-md mb-2">
                     {nextMatch.away_crest ? (
                       <img src={nextMatch.away_crest} alt={nextMatch.away_name} className="w-full h-full object-contain" />
                     ) : (
@@ -216,16 +217,16 @@ function Dashboard() {
             )}
           </div>
 
-          <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+          <div className="pt-4 border-t border-[#004D98]/20 flex items-center justify-between text-xs text-slate-400">
             <span>Official La Liga EA Sports Calendar</span>
-            <Link to="/matches" className="text-amber-400 hover:underline font-semibold flex items-center gap-1">
+            <Link to="/matches" className="text-[#EDBB00] hover:underline font-semibold flex items-center gap-1">
               Full Schedule & Fixtures →
             </Link>
           </div>
         </div>
 
         {/* Recent Form Tracker */}
-        <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md flex flex-col justify-between">
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)] flex flex-col justify-between">
           <div>
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -240,7 +241,7 @@ function Dashboard() {
                       item.result === 'W'
                         ? 'bg-emerald-500 text-white'
                         : item.result === 'D'
-                        ? 'bg-amber-500 text-slate-950'
+                        ? 'bg-[#EDBB00] text-[#030718]'
                         : 'bg-rose-500 text-white'
                     }`}
                   >
@@ -257,9 +258,9 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+          <div className="pt-4 border-t border-[#004D98]/20 flex items-center justify-between text-xs text-slate-400">
             <span>Last 5 Matches Played</span>
-            <Link to="/analytics" className="text-blue-400 hover:underline font-semibold">
+            <Link to="/analytics" className="text-[#60A5FA] hover:text-[#EDBB00] hover:underline font-semibold">
               Deep Analytics →
             </Link>
           </div>
@@ -269,11 +270,11 @@ function Dashboard() {
       {/* Recent Match Cards Row */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#A50044]" />
+          <h2 className="text-lg font-bold text-white flex items-center gap-2 font-heading">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#004D98]" />
             Recent Match Outings
           </h2>
-          <Link to="/matches" className="text-xs font-semibold text-amber-400 hover:underline">
+          <Link to="/matches" className="text-xs font-semibold text-[#EDBB00] hover:underline">
             View All ({matches.length}) →
           </Link>
         </div>
@@ -299,17 +300,17 @@ function Dashboard() {
 
       {/* Additional Historical and Venue Analytics */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
-          <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+          <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2 font-heading">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#004D98]" />
             Home vs Away Performance Split
           </h3>
           <HomeAwayChart summary={summary} />
         </div>
 
-        <div className="p-5 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
-          <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+        <div className="p-6 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)]">
+          <h3 className="text-base font-bold text-white mb-2 flex items-center gap-2 font-heading">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#EDBB00]" />
             Points Progression Across Matchdays
           </h3>
           <PointsProgressChart matches={finishedMatches} focusTeamId={1} />

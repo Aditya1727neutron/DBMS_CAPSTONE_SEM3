@@ -14,10 +14,10 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
   const displayData = showFullTable ? standings : standings.slice(0, 10);
 
   return (
-    <div className="overflow-x-auto rounded-3xl border border-white/10 bg-gradient-to-br from-[#081028]/90 via-[#040816]/95 to-[#0c0818]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8),0_0_25px_-5px_rgba(0,102,255,0.2),0_0_25px_-5px_rgba(255,0,85,0.15)]">
+    <div className="overflow-x-auto rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85),0_0_25px_rgba(0,77,152,0.25)]">
       <table className="w-full text-left border-collapse text-sm">
         <thead>
-          <tr className="border-b border-white/10 bg-black/40 text-xs font-black uppercase tracking-wider text-slate-400">
+          <tr className="border-b border-[#004D98]/20 bg-[#02040E]/60 text-xs font-black uppercase tracking-wider text-slate-400">
             <th className="py-4 pl-5 pr-2 text-center w-12">Pos</th>
             <th className="py-4 px-3">Club</th>
             <th className="py-4 px-2 text-center w-10">P</th>
@@ -27,11 +27,11 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
             <th className="py-4 px-2 text-center hidden md:table-cell w-12">GF</th>
             <th className="py-4 px-2 text-center hidden md:table-cell w-12">GA</th>
             <th className="py-4 px-2 text-center w-14 font-bold">GD</th>
-            <th className="py-4 px-3 text-center w-14 font-black text-[#FFD700] drop-shadow-[0_0_8px_rgba(255,215,0,0.5)]">PTS</th>
+            <th className="py-4 px-3 text-center w-14 font-black text-[#EDBB00] drop-shadow-[0_0_8px_rgba(237,187,0,0.5)]">PTS</th>
             <th className="py-4 px-3 text-center hidden lg:table-cell w-32">Form</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-white/5 text-slate-200">
+        <tbody className="divide-y divide-[#004D98]/10 text-slate-200">
           {displayData.map((row) => {
             const isFocus = row.team_id === focusTeamId;
             return (
@@ -39,15 +39,15 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
                 key={row.team_id || row.position}
                 className={`transition-all duration-200 ${getZoneBorder(row.position)} ${
                   isFocus
-                    ? 'bg-gradient-to-r from-[#0066FF]/25 via-[#FF0055]/20 to-transparent font-bold text-white shadow-[inset_0_0_20px_rgba(0,102,255,0.2)]'
-                    : 'hover:bg-white/[0.04]'
+                    ? 'bg-gradient-to-r from-[#004D98]/35 via-[#0055B3]/20 to-transparent font-bold text-white shadow-[inset_0_0_20px_rgba(0,77,152,0.25)]'
+                    : 'hover:bg-[#004D98]/10'
                 }`}
               >
                 <td className="py-3.5 pl-5 pr-2 text-center font-bold">
                   <span
                     className={`inline-flex items-center justify-center w-6 h-6 rounded-full text-xs ${
                       isFocus
-                        ? 'bg-[#FFD700] text-[#030712] font-black shadow-[0_0_10px_#FFD700]'
+                        ? 'bg-[#EDBB00] text-[#030718] font-black shadow-[0_0_10px_#EDBB00]'
                         : 'text-slate-300'
                     }`}
                   >
@@ -57,7 +57,7 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
                 <td className="py-3.5 px-3">
                   <Link
                     to={`/laliga/teams/${row.team_id}`}
-                    className="flex items-center gap-2.5 hover:text-amber-400 transition-colors group"
+                    className="flex items-center gap-2.5 hover:text-[#EDBB00] transition-colors group"
                   >
                     {row.crest_url ? (
                       <img
@@ -67,7 +67,7 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
                         onError={(e) => { e.target.style.display = 'none'; }}
                       />
                     ) : (
-                      <div className="w-6 h-6 rounded-full bg-slate-700 text-[10px] flex items-center justify-center font-bold">
+                      <div className="w-6 h-6 rounded-full bg-slate-800 text-[10px] flex items-center justify-center font-bold text-slate-300">
                         {row.tla || row.short_name?.substring(0, 3)}
                       </div>
                     )}
@@ -75,7 +75,7 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
                       {row.short_name || row.team_name}
                     </span>
                     {isFocus && (
-                      <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#A50044] text-white font-bold ml-1">
+                      <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#004D98] text-[#EDBB00] border border-[#EDBB00]/40 font-black ml-1.5 shadow-[0_0_8px_rgba(237,187,0,0.3)]">
                         Blaugrana
                       </span>
                     )}
@@ -90,7 +90,7 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
                 <td className="py-3.5 px-2 text-center font-semibold text-slate-200">
                   {formatGoalDifference(row.gd)}
                 </td>
-                <td className="py-3.5 px-3 text-center font-extrabold text-amber-400 text-base">
+                <td className="py-3.5 px-3 text-center font-black text-[#EDBB00] text-base drop-shadow-[0_0_8px_rgba(237,187,0,0.4)]">
                   {row.points}
                 </td>
                 <td className="py-3.5 px-3 text-center hidden lg:table-cell">
@@ -104,7 +104,7 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
                             res === 'W'
                               ? 'bg-emerald-500'
                               : res === 'D'
-                              ? 'bg-amber-500'
+                              ? 'bg-[#EDBB00] text-[#030718]'
                               : 'bg-rose-500'
                           }`}
                         >
@@ -123,13 +123,13 @@ const StandingsTable = ({ standings = [], focusTeamId = 1, showFullTable = true 
       </table>
 
       {/* Legend */}
-      <div className="flex flex-wrap items-center gap-4 px-4 py-3 bg-slate-900/90 border-t border-slate-800 text-xs text-slate-400">
+      <div className="flex flex-wrap items-center gap-4 px-4 py-3 bg-[#030718]/90 border-t border-[#004D98]/30 text-xs text-slate-400">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-blue-500" />
+          <span className="w-2.5 h-2.5 rounded-sm bg-[#004D98]" />
           <span>UEFA Champions League</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-sm bg-amber-500" />
+          <span className="w-2.5 h-2.5 rounded-sm bg-[#EDBB00]" />
           <span>UEFA Europa League</span>
         </div>
         <div className="flex items-center gap-1.5">

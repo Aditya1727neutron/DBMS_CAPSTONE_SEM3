@@ -59,9 +59,9 @@ function Matches() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#004D98]/30">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-sans">
+          <h1 className="text-2xl sm:text-3xl font-black text-[#EDBB00] tracking-tight font-heading drop-shadow-[0_0_20px_rgba(237,187,0,0.35)]">
             La Liga Fixtures & Results
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -77,7 +77,7 @@ function Matches() {
       {error && <ErrorBanner error={error} onRetry={loadMatches} />}
 
       {/* Filter Bar */}
-      <div className="p-4 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md space-y-3">
+      <div className="p-5 rounded-3xl border border-[#004D98]/30 bg-gradient-to-br from-[#060F2B]/90 via-[#030718]/95 to-[#081335]/90 backdrop-blur-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.85)] space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {/* Status */}
           <div>
@@ -88,7 +88,7 @@ function Matches() {
                 setStatus(e.target.value);
                 setPage(1);
               }}
-              className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+              className="w-full px-3.5 py-2.5 bg-[#030718] border border-[#004D98]/40 hover:border-[#EDBB00]/60 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#EDBB00]/40 cursor-pointer transition-colors"
             >
               {STATUS_FILTERS.map((f) => (
                 <option key={f.value} value={f.value}>
@@ -107,7 +107,7 @@ function Matches() {
                 setTeamId(e.target.value);
                 setPage(1);
               }}
-              className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+              className="w-full px-3.5 py-2.5 bg-[#030718] border border-[#004D98]/40 hover:border-[#EDBB00]/60 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#EDBB00]/40 cursor-pointer transition-colors"
             >
               <option value="">All La Liga Clubs</option>
               {teams.map((t) => (
@@ -127,7 +127,7 @@ function Matches() {
                 setMatchday(e.target.value);
                 setPage(1);
               }}
-              className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-amber-400 cursor-pointer"
+              className="w-full px-3.5 py-2.5 bg-[#030718] border border-[#004D98]/40 hover:border-[#EDBB00]/60 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#EDBB00]/40 cursor-pointer transition-colors"
             >
               <option value="">All Matchdays</option>
               {Array.from({ length: 38 }, (_, i) => i + 1).map((md) => (
@@ -140,15 +140,15 @@ function Matches() {
         </div>
 
         {/* Filter Summary */}
-        <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/80">
+        <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-[#004D98]/20">
           <span>
             Displaying <strong className="text-white">{matches.length}</strong> of{' '}
-            <strong className="text-amber-400">{pagination.total}</strong> matches
+            <strong className="text-[#EDBB00]">{pagination.total}</strong> matches
           </span>
           {(status !== 'All' || teamId || matchday) && (
             <button
               onClick={handleResetFilters}
-              className="text-amber-400 hover:text-amber-300 font-semibold transition-colors"
+              className="text-[#EDBB00] hover:text-[#FFD100] font-semibold transition-colors"
             >
               Reset Filters ↺
             </button>

@@ -5,7 +5,7 @@ echo =========================================================================
 echo   FC Barcelona La Liga DBMS - Database Provisioning & Seed
 echo =========================================================================
 
-set MYSQL_BIN="C:\Program Files\MySQL\MySQL Server 26.7\bin\mysql.exe"
+set MYSQL_BIN="C:\Program Files\MySQL\MySQL Server 8.4\bin\mysql.exe"
 if not exist %MYSQL_BIN% (
     set MYSQL_BIN=mysql
 )
