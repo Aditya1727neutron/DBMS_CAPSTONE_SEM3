@@ -1,7 +1,13 @@
+
 import axios from 'axios';
 
-// Vite dev proxy forwards /api to http://localhost:5000/api
-const baseURL = import.meta.env.VITE_API_BASE_URL || '/api';
+// Local development uses Vite proxy.
+// Production connects directly to the Render backend.
+const baseURL =
+  import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.DEV
+    ? '/api'
+    : 'https://dbms-capstone-sem3.onrender.com/api');
 
 export const api = axios.create({
   baseURL,
@@ -11,30 +17,37 @@ export const api = axios.create({
   timeout: 15000,
 });
 
-// Request Interceptor: Attach JWT Token if available
+// Attach JWT token if available
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('fcb_auth_token');
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+
     return config;
   },
   (error) => Promise.reject(error)
 );
 
-// Response Interceptor: Normalize Errors (Never swallow or substitute fake data)
+// Normalize server errors
 api.interceptors.response.use(
   (response) => response.data,
   (error) => {
     const normalizedError = {
-      message: error.response?.data?.message || error.message || 'An unexpected error occurred with the server.',
+      message:
+        error.response?.data?.message ||
+        error.message ||
+        'An unexpected error occurred with the server.',
       status: error.response?.status || 500,
-      details: error.response?.data?.details || error.response?.data?.errors || null,
+      details:
+        error.response?.data?.details ||
+        error.response?.data?.errors ||
+        null,
     };
 
     if (error.response?.status === 401) {
-      // Clear token on authentication expiry
       localStorage.removeItem('fcb_auth_token');
     }
 
